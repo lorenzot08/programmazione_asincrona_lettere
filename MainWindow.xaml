@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Button Content="Sorteggia" HorizontalAlignment="Left" Margin="30,232,0,0" VerticalAlignment="Top" Height="124" Width="198" Click="Button_Click"/>
+        <ListBox HorizontalAlignment="Left" Height="387" Margin="434,30,0,0" VerticalAlignment="Top" Width="342" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <Label x:Name="lblStampa" HorizontalAlignment="Left" Height="30" Margin="10,20,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="lblVisualizza" Content="" HorizontalAlignment="Left" Height="26" Margin="183,35,0,0" VerticalAlignment="Top" Width="204"/>
 
     </Grid>
 </Window>
