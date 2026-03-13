@@ -16,6 +16,7 @@ namespace Programmazione_Asincrona_Lettere
     /// </summary>
     public partial class MainWindow : Window
     {
+        int numeroLettereScelto = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -24,23 +25,42 @@ namespace Programmazione_Asincrona_Lettere
             t1.Start();
         }
         string lettere = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        private void StartGiro()
+        public async Task StartGiro()
         {
             int i = 0;
-            while (true)
+            await Task.Run(() =>
             {
-                this.Dispatcher.BeginInvoke(new Action(() =>
+                while (true)
                 {
-                        lblStampa.Content = lettere[i%26].ToString();//perche le lettere di una stringa trattati automaticamente come elementi di un array es: lettere[0]=a
-                }));
-                i++;
-                Thread.Sleep(230);
-            }
+                    this.Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        lblStampa.Content = lettere[i % 26].ToString();//perche le lettere di una stringa trattati automaticamente come elementi di un array es: lettere[0]=a
+                    }));
+                    i++;
+                    Thread.Sleep(230);
+                }
+            });
+         }
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            lblVisualizza.Content=lblVisualizza.Content.ToString()+lblStampa.Content.ToString();
+            if (!int.TryParse(NumLettere.Text, out int numeroLettereScelto) || numeroLettereScelto<=0)
+            {
+                MessageBox.Show("Inserire un numero valido (maggiore di zero).");
+            }
+            else
+            {
+                lblVisualizza.Content = lblVisualizza.Content.ToString() + lblStampa.Content.ToString();
+                if (lblVisualizza.Content.ToString().Length >= numeroLettereScelto)
+                {
+                    lista.Items.Add(lblVisualizza.Content.ToString());
+                    lblVisualizza.Content = "";
+                }
+            }
         }
+
     }
 }

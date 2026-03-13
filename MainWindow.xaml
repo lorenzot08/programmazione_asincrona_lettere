@@ -1,16 +1,15 @@
 ﻿<Window x:Class="Programmazione_Asincrona_Lettere.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Programmazione_Asincrona_Lettere"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Sorteggia" HorizontalAlignment="Left" Margin="30,232,0,0" VerticalAlignment="Top" Height="124" Width="198" Click="Button_Click"/>
-        <ListBox HorizontalAlignment="Left" Height="387" Margin="434,30,0,0" VerticalAlignment="Top" Width="342" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Label x:Name="lblStampa" HorizontalAlignment="Left" Height="30" Margin="10,20,0,0" VerticalAlignment="Top" Width="55"/>
-        <Label x:Name="lblVisualizza" Content="" HorizontalAlignment="Left" Height="26" Margin="183,35,0,0" VerticalAlignment="Top" Width="204"/>
-
-    </Grid>
+        Title="Generatore Lettere" Height="450" Width="750" Background="#F9F9F9" Cursor="">
+    <StackPanel Margin="30">
+        <TextBlock Text="Generatore Parole" FontSize="24" FontWeight="Bold" Foreground="DodgerBlue" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        <TextBlock Text="Quante lettere?" Foreground="#555" Margin="0,0,5,5"/>
+        <TextBox x:Name="NumLettere" Height="35" FontSize="16" VerticalContentAlignment="Center" BorderBrush="DodgerBlue" BorderThickness="1" Margin="0,0,0,15" TextChanged="TextBox_TextChanged"/>
+        <Button Content="SORTEGGIA" Height="45" Background="DodgerBlue" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="Button_Click" Cursor="Hand"/>
+        <Label x:Name="lblStampa" Content="Pronto" Foreground="#FF191616" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+        <Label x:Name="lblVisualizza" Content="" FontSize="18" FontWeight="Bold" Foreground="#333" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+        <TextBlock Text="Ultime parole estratte:" FontSize="12" Foreground="#888" Margin="0,10,0,5"/>
+        <ListBox x:Name="lista" Height="96" BorderBrush="#EEE" BorderThickness="1" Background="White"/>
+    </StackPanel>
 </Window>
